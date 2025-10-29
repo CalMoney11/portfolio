@@ -306,133 +306,195 @@ nav {
 }
 
 /* ========================================
-   SERVICES SECTION
+   SERVICES SECTION (updated to palette)
    ======================================== */
 .services-section {
-    padding: 120px 0;
+    padding: 150px 0;
     background: linear-gradient(180deg, var(--bg) 0%, #0f0f11 100%);
 }
 
 .section-header {
     text-align: center;
-    margin-bottom: 80px;
+    margin-bottom: 100px;
 }
 
 .section-label {
     display: inline-block;
     padding: 8px 20px;
-    background: linear-gradient(90deg, rgba(207,233,154,0.08), rgba(200,157,125,0.06));
-    border: 1px solid rgba(207,233,154,0.18);
-    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(207,233,154,0.08), rgba(200,157,125,0.05));
+    border: 1px solid rgba(207,233,154,0.16);
+    border-radius: 50px;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--green-dark);
-    margin-bottom: 18px;
+    margin-bottom: 20px;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
 
 .section-title {
-    font-size: 48px;
-    font-weight: 900;
-    margin-bottom: 12px;
+    font-size: 64px;
+    font-weight: 800;
+    margin-bottom: 20px;
     color: var(--cream);
 }
 
 .section-subtitle {
-    font-size: 18px;
+    font-size: 20px;
     color: var(--muted);
     max-width: 700px;
     margin: 0 auto;
 }
 
+/* NEW SMOOTH LIST LAYOUT */
 .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
+    display: block;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .service-card {
-    background: var(--card-bg);
-    border: 1px solid rgba(255,255,255,0.03);
-    padding: 40px;
-    border-radius: 24px;
-    transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    background: transparent;
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.03);
+    padding: 60px 0;
+    transition: padding 0.35s ease, background 0.35s ease, border-color 0.35s ease, transform 0.35s ease;
     cursor: pointer;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.service-card:last-child {
+    border-bottom: 1px solid rgba(255,255,255,0.03);
 }
 
 .service-card::before {
-    content: '';
-    position: absolute;
-    top: -30%;
-    left: -20%;
-    width: 160%;
-    height: 160%;
-    background: linear-gradient(120deg, rgba(207,233,154,0.06) 0%, rgba(200,157,125,0.06) 50%, rgba(90,62,45,0.06) 100%);
-    transform: rotate(8deg);
-    opacity: 0;
-    transition: opacity 0.45s ease, transform 0.6s ease;
-    pointer-events: none;
+    display: none;
 }
 
-.service-card:hover::before {
-    opacity: 1;
-    transform: rotate(0deg) scale(1.02);
-}
-
-.service-card:hover {
-    transform: translateY(-8px);
+/* Hover/focus state tuned to palette */
+.service-card:hover,
+.service-card:focus-within {
+    transform: translateY(-4px);
     border-color: rgba(207,233,154,0.12);
-    box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+    box-shadow: 0 18px 42px rgba(14,14,14,0.6);
+    background: linear-gradient(90deg, rgba(207,233,154,0.02), rgba(200,157,125,0.02));
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
+/* number column */
 .service-number {
-    font-size: 44px;
-    font-weight: 900;
-    background: linear-gradient(90deg, var(--green-dark), var(--tan));
+    font-size: 48px;
+    font-weight: 800;
+    color: rgba(246,245,243,0.06);
+    margin-bottom: 0;
+    line-height: 1;
+}
+
+/* gradient accent for number on hover */
+.service-card:hover .service-number,
+.service-card:focus-within .service-number {
+    background: linear-gradient(135deg, var(--green-dark) 0%, var(--tan) 60%, var(--brown) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-bottom: 22px;
+}
+
+/* main content column */
+.service-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .service-card h3 {
-    font-size: 24px;
-    font-weight: 800;
-    margin-bottom: 14px;
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    position: relative;
+    line-height: 1.15;
     color: var(--cream);
 }
 
 .service-card p {
     color: var(--muted);
     line-height: 1.8;
-    margin-bottom: 22px;
-    font-size: 15px;
+    margin-bottom: 30px;
+    font-size: 16px;
 }
 
+/* tags styled as subtle inline list with numeric prefixes */
 .tech-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 15px;
+    padding-top: 10px;
 }
 
 .tech-tag {
-    padding: 8px 14px;
+    padding: 8px 12px;
     background: rgba(246,245,243,0.02);
-    border: 1px solid rgba(246,245,243,0.04);
+    border: 1px solid rgba(246,245,243,0.03);
     border-radius: 999px;
-    font-size: 12px;
+    font-size: 14px;
     color: var(--muted);
-    transition: all 0.25s ease;
+    transition: all 0.3s ease;
+    position: relative;
 }
 
+/* numeric prefix uses palette for accent on hover */
+.tech-tag::before {
+    content: attr(data-index);
+    display: inline-block;
+    margin-right: 12px;
+    color: rgba(120,120,120,0.9);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* If you prefer the old nth-child numbering leave these; otherwise set data-index="" in HTML */
+.tech-tag:nth-child(1)::before { content: '01'; }
+.tech-tag:nth-child(2)::before { content: '02'; }
+.tech-tag:nth-child(3)::before { content: '03'; }
+.tech-tag:nth-child(4)::before { content: '04'; }
+.tech-tag:nth-child(5)::before { content: '05'; }
+
 .service-card:hover .tech-tag {
-    background: linear-gradient(90deg, rgba(207,233,154,0.08), rgba(200,157,125,0.06));
-    border-color: rgba(207,233,154,0.14);
+    background: linear-gradient(90deg, rgba(207,233,154,0.06), rgba(200,157,125,0.04));
+    border-color: rgba(207,233,154,0.12);
     color: var(--green-dark);
 }
+
+.service-card:hover .tech-tag::before {
+    color: var(--green-dark);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .service-card {
+        grid-template-columns: 80px 1fr;
+        gap: 30px;
+        padding: 40px 0;
+    }
+
+    .service-number {
+        font-size: 32px;
+    }
+
+    .service-card h3 {
+        font-size: 32px;
+    }
+
+    .section-title {
+        font-size: 40px;
+    }
+}
+
 
 /* ========================================
    PARALLAX SECTION
