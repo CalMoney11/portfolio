@@ -89,19 +89,43 @@ function initHorizontalScroll() {
 }
 
 // ========================================
-// SERVICE CARDS ANIMATION
+// SERVICE CARDS ANIMATION - STICK ON SCROLL
 // ========================================
 function initServiceCards() {
     gsap.utils.toArray(".service-card").forEach((card, i) => {
-        gsap.from(card, {
-            opacity: 0,
-            y: 100,
-            duration: 1,
-            scrollTrigger: {
-                trigger: card,
-                start: "top 80%",
-                end: "top 50%",
-                scrub: 1
+        // Fade in and stay visible
+        gsap.fromTo(card, 
+            {
+                opacity: 0,
+                y: 50
+            },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 80%",
+                    end: "top 60%",
+                    scrub: 1,
+                    toggleActions: "play none none reverse",
+                    // Once it's in view, it stays
+                    once: false
+                }
+            }
+        );
+
+        // Keep the card visible once it enters
+        ScrollTrigger.create({
+            trigger: card,
+            start: "top 80%",
+            onEnter: () => {
+                gsap.to(card, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.6,
+                    ease: "power2.out"
+                });
             }
         });
     });
