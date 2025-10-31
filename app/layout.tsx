@@ -1,5 +1,5 @@
-import type { Metadata } from 'next';
 import './globals.css'; // <-- Import the global styles here
+import type { Metadata } from 'next';
 
 // Define your app's metadata
 export const metadata: Metadata = {

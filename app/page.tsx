@@ -47,6 +47,10 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      {/* TEMP: Tailwind smoke test */}
+    <div className="m-6 p-6 bg-blue-500 text-white font-bold">
+      TAILWIND TEST — bg-blue-500
+    </div>
       {/* Navigation */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? 'bg-background/80 backdrop-blur-xl border-b border-border shadow-lg' : 'bg-transparent'
