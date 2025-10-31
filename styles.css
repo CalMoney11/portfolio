@@ -5,18 +5,33 @@
 }
 
 :root {
-    --primary: #6366f1;
-    --primary-dark: #4f46e5;
-    --secondary: #8b5cf6;
-    --accent: #ec4899;
-    --dark: #0f172a;
-    --dark-light: #1e293b;
-    --gray: #64748b;
-    --gray-light: #cbd5e1;
-    --bg: #0a0f1e;
-    --bg-card: #1a1f35;
-    --text: #e2e8f0;
-    --text-muted: #94a3b8;
+    /* --- NEW FOREST & EARTH PALETTE --- */
+    --forest-green: #15803d;     /* Primary: Rich, deep green */
+    --evergreen-dark: #052e16;   /* Primary Dark: Very dark green/black */
+    --moss-light: #65a30d;       /* Secondary: Brighter moss/lime accent */
+    --sky-blue-muted: #38bdf8;   /* Accent: Muted sky blue (for links/glow) */
+    --earth-brown: #78350f;      /* Dark: Deep brown */
+    --stone-gray: #475569;       /* Dark Light: Slate gray */
+    --sand-beige: #a8a29e;       /* Gray: Muted beige/sand */
+    --cloud-white: #e5e7eb;      /* Gray Light: Off-white */
+    --bg-dark-forest: #0b1712;   /* Background: Very dark forest floor */
+    --bg-card-moss: #1c2e27;     /* Background Card: Muted dark moss */
+    --text-light: #e0f2f1;       /* Text: Light, almost-white text */
+    --text-faded: #9ca3af;       /* Text Muted: Faded gray for less important text */
+
+    /* Mapping to original variable structure for easy implementation */
+    --primary: var(--forest-green);
+    --primary-dark: var(--evergreen-dark);
+    --secondary: var(--moss-light);
+    --accent: var(--sky-blue-muted);
+    --dark: var(--earth-brown);
+    --dark-light: var(--stone-gray);
+    --gray: var(--sand-beige);
+    --gray-light: var(--cloud-white);
+    --bg: var(--bg-dark-forest);
+    --bg-card: var(--bg-card-moss);
+    --text: var(--text-light);
+    --text-muted: var(--text-faded);
 }
 
 body {
@@ -33,10 +48,10 @@ body {
     padding: 0 24px;
 }
 
-/* Header with animated background */
+/* Header with animated background - New Green/Earth Gradient */
 header {
     position: relative;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background: linear-gradient(135deg, var(--forest-green) 0%, #34d399 50%, var(--moss-light) 100%);
     padding: 120px 0 100px;
     text-align: center;
     overflow: hidden;
@@ -49,9 +64,10 @@ header::before {
     left: 0;
     right: 0;
     bottom: 0;
+    /* Updated glow to be green/light-blue tinted */
     background: 
-        radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
+        radial-gradient(circle at 20% 50%, rgba(100, 250, 150, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(56, 189, 248, 0.1) 0%, transparent 50%);
     animation: float 20s ease-in-out infinite;
 }
 
@@ -69,7 +85,7 @@ header h1 {
     font-size: 4rem;
     font-weight: 800;
     margin-bottom: 16px;
-    background: linear-gradient(to right, #fff, #f0f0f0);
+    background: linear-gradient(to right, #fff, var(--cloud-white)); /* Kept white for contrast */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -101,6 +117,7 @@ h2 {
     font-size: 2.5rem;
     margin-bottom: 40px;
     font-weight: 700;
+    /* New Green Gradient for headings */
     background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -116,6 +133,7 @@ h2::after {
     left: 0;
     width: 60px;
     height: 4px;
+    /* New Green Gradient underline */
     background: linear-gradient(90deg, var(--primary), var(--secondary));
     border-radius: 2px;
 }
@@ -145,7 +163,8 @@ h2::after {
     background: var(--bg-card);
     border-radius: 20px;
     overflow: hidden;
-    border: 1px solid rgba(99, 102, 241, 0.1);
+    /* Border now uses a subtle green */
+    border: 1px solid rgba(21, 128, 61, 0.1); 
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     opacity: 0;
@@ -159,6 +178,7 @@ h2::after {
     left: 0;
     right: 0;
     height: 3px;
+    /* New Green/Blue Accent Gradient */
     background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
     opacity: 0;
     transition: opacity 0.4s ease;
@@ -173,10 +193,11 @@ h2::after {
 
 .project-card:hover {
     transform: translateY(-8px);
-    border-color: rgba(99, 102, 241, 0.3);
+    /* Box-shadow now uses a soft green/blue glow */
+    border-color: rgba(21, 128, 61, 0.3);
     box-shadow: 
-        0 20px 40px rgba(99, 102, 241, 0.2),
-        0 0 60px rgba(139, 92, 246, 0.1);
+        0 20px 40px rgba(21, 128, 61, 0.2),
+        0 0 60px rgba(56, 189, 248, 0.1);
 }
 
 .project-card:hover::before {
@@ -217,6 +238,7 @@ h2::after {
 .btn {
     display: inline-block;
     padding: 12px 32px;
+    /* Button uses the new Green Gradient */
     background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
     color: white;
     text-decoration: none;
@@ -246,13 +268,15 @@ h2::after {
 
 .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+    /* Shadow uses the new primary green */
+    box-shadow: 0 8px 24px rgba(21, 128, 61, 0.4);
 }
 
 /* Footer */
 footer {
     background: var(--dark-light);
-    border-top: 1px solid rgba(99, 102, 241, 0.1);
+    /* Border uses subtle green */
+    border-top: 1px solid rgba(21, 128, 61, 0.1); 
     padding: 60px 0;
     text-align: center;
     margin-top: 80px;
@@ -290,6 +314,7 @@ footer p {
     left: 0;
     width: 0;
     height: 2px;
+    /* Link underline uses new Green Gradient */
     background: linear-gradient(90deg, var(--primary), var(--secondary));
     transition: width 0.3s ease;
 }
