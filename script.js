@@ -380,4 +380,4 @@ function initCarousel() {
     
     // --- Initialization ---
     goToSlide(0); 
-};
+}
