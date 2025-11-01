@@ -363,6 +363,50 @@ function initCarousel() {
 }
 
 // Initialize carousel when DOM is ready
-$('.carousel').carousel({
-  interval: 2000
-});
+function initCarousel() {
+    const carousel = document.getElementById('gis-carousel');
+    if (!carousel) return;
+    
+    const slides = carousel.querySelectorAll('.slide');
+    const dots = carousel.querySelectorAll('.dot');
+    let current = 0;
+    
+    function showSlide(index) {
+        // Update slides
+        slides.forEach((slide, i) => {
+            slide.style.transform = `translateX(${(i - index) * 100}%)`;
+        });
+        
+        // Update dots
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+        });
+        
+        // Handle video
+        const video = slides[index].querySelector('video');
+        if (video) {
+            video.play();
+            video.onended = () => next();
+        } else {
+            setTimeout(next, 4000);
+        }
+    }
+    
+    function next() {
+        current = (current + 1) % slides.length;
+        showSlide(current);
+    }
+    
+    // Click handlers
+    dots.forEach((dot, i) => {
+        dot.onclick = () => {
+            current = i;
+            showSlide(current);
+        };
+    });
+    
+    showSlide(0);
+}
+
+// Start on load
+document.addEventListener('DOMContentLoaded', initCarousel);
