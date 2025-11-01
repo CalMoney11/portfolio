@@ -327,6 +327,29 @@ footer p {
     width: 100%;
 }
 
+.carousel {
+  position: relative;
+  width: 600px;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.slide.active {
+  opacity: 1;
+}
+.slide video, .slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* Animations */
 @keyframes fadeInUp {
     from {
@@ -387,3 +410,4 @@ footer p {
         gap: 16px;
     }
 }
+
