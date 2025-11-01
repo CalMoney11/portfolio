@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calvin Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="scripts.js"></script>
 </head>
 <body>
     <header>
@@ -30,70 +29,65 @@
                     <img src="https://via.placeholder.com/600x400" alt="Project 1">
                     <div class="project-info">
                         <h3>Project Title 1</h3>
-                        <p>I'm working on a full stack art social and AI integrated app using Flowcharts for UI and Backend orginazation and Next.js tailwind and TS for development</p>
+                        <p>I'm working on a full stack art social and AI integrated app using Flowcharts for UI and Backend organization and Next.js tailwind and TS for development</p>
                         <a href="https://github.com/yourusername/repo" target="_blank" class="btn">View on GitHub</a>
                     </div>
                 </div>
 
-                <!-- Project 2 -->
+                <!-- Project 2 - GIS Carousel -->
                 <div class="project-card">
                     <div id="gis-carousel" class="custom-carousel">
                         <div class="carousel-track">
-                            <div class="slide active"> 
-                                <video class="d-block w-100" src="img/lab_3.mp4"></video> 
+                            <div class="slide active">
+                                <video autoplay muted loop playsinline>
+                                    <source src="img/lab_3.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
                             <div class="slide">
-                                <img class="d-block w-100" src="img/lab_3_flowchart.png" alt="Flowchart">
+                                <img src="img/lab_3.png" alt="GIS Map">
                             </div>
                             <div class="slide">
-                                <img class="d-block w-100" src="img/lab_3.png" alt="Map">
+                                <img src="img/lab_3_flowchart.png" alt="GIS Flowchart">
                             </div>
                         </div>
                         
-                        <button class="carousel-control prev-control">◀</button>
-                        <button class="carousel-control next-control">▶</button>
+                        <button class="carousel-control prev-control" aria-label="Previous slide">◀</button>
+                        <button class="carousel-control next-control" aria-label="Next slide">▶</button>
+                        
                         <div class="carousel-dots">
-                            <span class="dot active"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
+                            <span class="dot active" data-index="0"></span>
+                            <span class="dot" data-index="1"></span>
+                            <span class="dot" data-index="2"></span>
                         </div>
                     </div>
                     
                     <div class="project-info">
-                        <h3>GIS and Orginazation</h3>
-                        <p>In my gis class I have been using ArcGisPro to design and make maps while using eraser.io to keepmyself orginized along with a set of steps I took to make the final product with sources, actions, and results</p>
+                        <h3>GIS and Organization</h3>
+                        <p>In my GIS class I have been using ArcGIS Pro to design and make maps while using eraser.io to keep myself organized along with a set of steps I took to make the final product with sources, actions, and results</p>
                         <a href="https://github.com/yourusername/repo" target="_blank" class="btn">View on GitHub</a>
                     </div>
                 </div>
 
-                    <div class="project-info">
-                        <h3>GIS and Orginazation</h3>
-                        <p>In my gis class I have been using ArcGisPro to design and make maps while using eraser.io to keepmyself orginized along with a set of steps I took to make the final product with sources, actions, and results</p>
-                        <a href="https://github.com/yourusername/repo" target="_blank" class="btn">View on GitHub</a>
-                    </div>
-                </div>
-
-                <!-- Project 3 (Video Example) -->
+                <!-- Project 3 -->
                 <div class="project-card">
                     <video controls poster="https://via.placeholder.com/600x400">
                         <source src="your-video.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <div class="project-info">
-                        <h3>Canvas API and chrome extenssion</h3>
+                        <h3>Canvas API and Chrome Extension</h3>
                         <p>Brief description of your project and what technologies you used.</p>
                         <a href="https://github.com/yourusername/repo" target="_blank" class="btn">View on GitHub</a>
                     </div>
                 </div>
-
-                <!-- Add more projects as needed -->
             </div>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Your Name. All rights reserved.</p>
+            <p>&copy; 2025 Calvin Peck Dobson. All rights reserved.</p>
             <div class="social-links">
                 <a href="https://github.com/yourusername" target="_blank">GitHub</a>
                 <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
