@@ -327,27 +327,60 @@ footer p {
     width: 100%;
 }
 
-.carousel {
-  position: relative;
-  width: 600px;
-  height: 400px;
-  overflow: hidden;
-  border-radius: 1rem;
+/* --- Custom Carousel Styles for Project Cards --- */
+.custom-carousel {
+    position: relative;
+    width: 100%;
+    height: 280px; /* Match project image height */
+    overflow: hidden;
 }
-.slide {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 1s ease;
+
+.carousel-track {
+    display: flex;
+    width: 300%; /* 100% * number of slides (3 slides in this case) */
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
 }
-.slide.active {
-  opacity: 1;
+
+.custom-carousel .slide {
+    flex: 0 0 33.333%; /* Each slide takes up one-third (1/3) of the track width */
+    position: relative;
+    width: 100%; /* This is now the width of the slide within the track */
+    height: 100%;
 }
-.slide video, .slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+
+.custom-carousel .slide img,
+.custom-carousel .slide video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Dots Indicator */
+.carousel-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dot.active {
+    background: var(--moss-light); /* Highlight with secondary color */
+    transform: scale(1.2);
 }
 
 /* Animations */
