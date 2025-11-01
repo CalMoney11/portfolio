@@ -363,50 +363,31 @@ function initCarousel() {
 }
 
 // Initialize carousel when DOM is ready
-function initCarousel() {
-    const carousel = document.getElementById('gis-carousel');
-    if (!carousel) return;
-    
-    const slides = carousel.querySelectorAll('.slide');
-    const dots = carousel.querySelectorAll('.dot');
-    let current = 0;
-    
-    function showSlide(index) {
-        // Update slides
-        slides.forEach((slide, i) => {
-            slide.style.transform = `translateX(${(i - index) * 100}%)`;
-        });
-        
-        // Update dots
-        dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === index);
-        });
-        
-        // Handle video
-        const video = slides[index].querySelector('video');
-        if (video) {
-            video.play();
-            video.onended = () => next();
-        } else {
-            setTimeout(next, 4000);
-        }
-    }
-    
-    function next() {
-        current = (current + 1) % slides.length;
-        showSlide(current);
-    }
-    
-    // Click handlers
-    dots.forEach((dot, i) => {
-        dot.onclick = () => {
-            current = i;
-            showSlide(current);
-        };
-    });
-    
-    showSlide(0);
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCarousel);
+} else {
+    initCarousel();
 }
 
-// Start on load
-document.addEventListener('DOMContentLoaded', initCarousel);
+// Slideshow for header background
+const slides = document.querySelectorAll('.slide');
+let current = 0;
+
+function showSlide(index) {
+  slides.forEach((s, i) => s.classList.toggle('active', i === index));
+}
+
+function nextSlide() {
+  current = (current + 1) % slides.length;
+  showSlide(current);
+
+  const active = slides[current].querySelector('video');
+  if (active) {
+    active.play();
+    active.onended = nextSlide; // move on when video finishes
+  } else {
+    setTimeout(nextSlide, 4000); // 4s per image
+  }
+}
+
+nextSlide();
