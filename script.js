@@ -278,6 +278,97 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+// Horizontal Carousel with auto-advance
+function initCarousel() {
+    const carousel = document.getElementById('gis-carousel');
+    if (!carousel) return;
+    
+    const track = carousel.querySelector('.carousel-track');
+    const slides = carousel.querySelectorAll('.slide');
+    const dots = carousel.querySelectorAll('.dot');
+    let currentIndex = 0;
+    let autoAdvanceTimer = null;
+    
+    function goToSlide(index) {
+        currentIndex = index;
+        
+        // Move the track horizontally
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        // Update dots
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+        });
+        
+        // Handle video playback
+        slides.forEach((slide, i) => {
+            const video = slide.querySelector('video');
+            if (video) {
+                if (i === index) {
+                    video.play();
+                } else {
+                    video.pause();
+                    video.currentTime = 0;
+                }
+            }
+        });
+        
+        scheduleNextSlide();
+    }
+    
+    function scheduleNextSlide() {
+        clearTimeout(autoAdvanceTimer);
+        
+        const currentSlide = slides[currentIndex];
+        const video = currentSlide.querySelector('video');
+        
+        if (video) {
+            // Wait for video to end
+            video.onended = () => {
+                nextSlide();
+            };
+        } else {
+            // Auto-advance after 4 seconds for images
+            autoAdvanceTimer = setTimeout(() => {
+                nextSlide();
+            }, 4000);
+        }
+    }
+    
+    function nextSlide() {
+        const nextIndex = (currentIndex + 1) % slides.length;
+        goToSlide(nextIndex);
+    }
+    
+    function prevSlide() {
+        const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+        goToSlide(prevIndex);
+    }
+    
+    // Dot click handlers
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            goToSlide(index);
+        });
+    });
+    
+    // Keyboard navigation
+    carousel.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') prevSlide();
+        if (e.key === 'ArrowRight') nextSlide();
+    });
+    
+    // Start the carousel
+    goToSlide(0);
+}
+
+// Initialize carousel when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCarousel);
+} else {
+    initCarousel();
+}
+
 // Slideshow for header background
 const slides = document.querySelectorAll('.slide');
 let current = 0;
