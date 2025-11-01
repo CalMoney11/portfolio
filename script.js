@@ -363,31 +363,6 @@ function initCarousel() {
 }
 
 // Initialize carousel when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCarousel);
-} else {
-    initCarousel();
-}
-
-// Slideshow for header background
-const slides = document.querySelectorAll('.slide');
-let current = 0;
-
-function showSlide(index) {
-  slides.forEach((s, i) => s.classList.toggle('active', i === index));
-}
-
-function nextSlide() {
-  current = (current + 1) % slides.length;
-  showSlide(current);
-
-  const active = slides[current].querySelector('video');
-  if (active) {
-    active.play();
-    active.onended = nextSlide; // move on when video finishes
-  } else {
-    setTimeout(nextSlide, 4000); // 4s per image
-  }
-}
-
-nextSlide();
+$('.carousel').carousel({
+  interval: 2000
+});
