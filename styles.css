@@ -412,6 +412,16 @@ footer p {
     transform: scale(1.2);
 }
 
+.media-section {
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.media-section video {
+    max-width: 100%;
+    height: auto;
+}
+
 /* Animations */
 @keyframes fadeInUp {
     from {
