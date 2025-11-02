@@ -415,6 +415,7 @@ footer p {
 .media-section {
     margin: 20px 0;
     overflow: hidden;
+    object-fit: contain;
 }
 
 .media-section video {
