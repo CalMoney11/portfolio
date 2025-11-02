@@ -415,12 +415,14 @@ footer p {
 .media-section {
     margin: 20px 0;
     overflow: hidden;
-    object-fit: contain;
 }
 
+.media-section img,
 .media-section video {
-    max-width: 100%;
+    width: 100%;
     height: auto;
+    display: block;
+    object-fit: contain;
 }
 
 /* Animations */
