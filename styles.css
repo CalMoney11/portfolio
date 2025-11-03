@@ -196,7 +196,7 @@ h2::after {
 
 .skill-tag {
     background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-    color: white;
+    color: linear-gradient(to right, #fff, var(--cloud-white));
     padding: 10px 18px;
     border-radius: 25px;
     font-size: 0.9rem;
