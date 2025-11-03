@@ -149,7 +149,7 @@ h2::after {
 /* ==================== SKILLS SECTION ==================== */
 .skills {
     margin: 80px 0;
-    background: linear-gradient(135deg, rgba(21, 128, 61, 0.05) 0%, rgba(52, 211, 153, 0.05) 100%);
+    background: var(--moss-light);
     padding: 60px 40px;
     border-radius: 20px;
 }
@@ -169,7 +169,7 @@ h2::after {
 }
 
 .skill-category {
-    background: linear-gradient(to right, #fff, var(--cloud-white));
+    background: var(--bg-card);
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
@@ -195,8 +195,8 @@ h2::after {
 }
 
 .skill-tag {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-    color: linear-gradient(to right, #fff, var(--cloud-white));
+    background: var(--moss-light);
+    color: var(--bg-card);
     padding: 10px 18px;
     border-radius: 25px;
     font-size: 0.9rem;
@@ -240,7 +240,7 @@ h2::after {
 }
 
 .interest-card {
-    background: linear-gradient(to right, #fff, var(--cloud-white));
+    background: var(--bg-card);
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
