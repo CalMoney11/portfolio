@@ -209,7 +209,7 @@ function initAnimations() {
                 entry.target.style.transform = 'translateY(0)';
             }
         });
-    }, { threshold: 0.01 });
+    }, { threshold: 0.05 });
 
     sections.forEach(section => {
         section.style.opacity = '0';
