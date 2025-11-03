@@ -1,80 +1,82 @@
 // Wait for DOM to be ready
 document.addEventListener('DOMContentLoaded', () => {
-    initCarousel();
+    initCarousels();
     initAnimations();
 });
 
 // ==================== CAROUSEL ====================
-function initCarousel() {
-    const carousel = document.getElementById('gis-carousel');
-    if (!carousel) return;
-
-    const track = carousel.querySelector('.carousel-track');
-    const slides = carousel.querySelectorAll('.slide');
-    const dots = carousel.querySelectorAll('.dot');
-    const prevBtn = carousel.querySelector('.prev-control');
-    const nextBtn = carousel.querySelector('.next-control');
+function initCarousels() {
+    // Get ALL carousels instead of just one
+    const carousels = document.querySelectorAll('.custom-carousel');
     
-    let currentIndex = 0;
-    let autoTimer = null;
+    carousels.forEach(carousel => {
+        const track = carousel.querySelector('.carousel-track');
+        const slides = carousel.querySelectorAll('.slide');
+        const dots = carousel.querySelectorAll('.dot');
+        const prevBtn = carousel.querySelector('.prev-control');
+        const nextBtn = carousel.querySelector('.next-control');
+        
+        let currentIndex = 0;
+        let autoTimer = null;
 
-    function goToSlide(index) {
-        currentIndex = index;
-        
-        // Move track
-        track.style.transform = `translateX(-${currentIndex * 33.333}%)`;
-        
-        // Update dots
-        dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === index);
-        });
-        
-        // Handle video playback
-        slides.forEach((slide, i) => {
-            const video = slide.querySelector('video');
-            if (video) {
-                if (i === index) {
-                    video.play();
-                } else {
-                    video.pause();
-                    video.currentTime = 0;
+        function goToSlide(index) {
+            currentIndex = index;
+            
+            // Move track
+            track.style.transform = `translateX(-${currentIndex * 33.333}%)`;
+            
+            // Update dots
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            
+            // Handle video playback
+            slides.forEach((slide, i) => {
+                const video = slide.querySelector('video');
+                if (video) {
+                    if (i === index) {
+                        video.play();
+                    } else {
+                        video.pause();
+                        video.currentTime = 0;
+                    }
                 }
-            }
-        });
-        
-        scheduleNext();
-    }
-
-    function scheduleNext() {
-        clearTimeout(autoTimer);
-        
-        const video = slides[currentIndex].querySelector('video');
-        
-        if (video && !video.loop) {
-            video.onended = next;
-        } else {
-            autoTimer = setTimeout(next, 4000);
+            });
+            
+            scheduleNext();
         }
-    }
 
-    function next() {
-        goToSlide((currentIndex + 1) % slides.length);
-    }
+        function scheduleNext() {
+            clearTimeout(autoTimer);
+            
+            const video = slides[currentIndex].querySelector('video');
+            
+            if (video && !video.loop) {
+                video.onended = next;
+            } else {
+                autoTimer = setTimeout(next, 4000);
+            }
+        }
 
-    function prev() {
-        goToSlide((currentIndex - 1 + slides.length) % slides.length);
-    }
+        function next() {
+            goToSlide((currentIndex + 1) % slides.length);
+        }
 
-    // Event listeners
-    prevBtn.addEventListener('click', prev);
-    nextBtn.addEventListener('click', next);
-    
-    dots.forEach((dot, i) => {
-        dot.addEventListener('click', () => goToSlide(i));
+        function prev() {
+            goToSlide((currentIndex - 1 + slides.length) % slides.length);
+        }
+
+        // Event listeners
+        prevBtn.addEventListener('click', prev);
+        nextBtn.addEventListener('click', next);
+        
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => goToSlide(i));
+        });
+
+        // Start
+        goToSlide(0);
     });
-
-    // Start
-    goToSlide(0);
 }
 
 // ==================== ANIMATIONS ====================
