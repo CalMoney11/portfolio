@@ -149,7 +149,6 @@ h2::after {
 /* ==================== SKILLS SECTION ==================== */
 .skills {
     margin: 80px 0;
-    background: var(--moss-light);
     padding: 60px 40px;
     border-radius: 20px;
 }
