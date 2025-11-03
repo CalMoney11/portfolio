@@ -149,6 +149,7 @@ h2::after {
 /* ==================== SKILLS SECTION ==================== */
 .skills {
     margin: 80px 0;
+    background: var(--bg-card);
     padding: 60px 40px;
     border-radius: 20px;
 }
