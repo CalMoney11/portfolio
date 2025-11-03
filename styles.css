@@ -169,7 +169,7 @@ h2::after {
 }
 
 .skill-category {
-    background: white;
+    background: linear-gradient(to right, #fff, var(--cloud-white));
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
