@@ -29,7 +29,18 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+html { scroll-behavior: smooth; scroll-padding-top: 96px; background: var(--paper); }
+
+/* Fixed topographic map behind every page. It stays still while the page scrolls over it. */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: url('img/topo.svg') center / cover no-repeat;
+    opacity: 0.75;
+    pointer-events: none;
+}
 
 body {
     font-family: var(--wide);
@@ -37,7 +48,6 @@ body {
     font-size: 17px;
     line-height: 1.6;
     color: var(--ink);
-    background: var(--paper);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
 }
@@ -321,6 +331,7 @@ p { max-width: var(--measure); }
 .contact__links { display: flex; flex-wrap: wrap; gap: 28px; margin-top: 40px; }
 .contact__links a { color: var(--paper); }
 .contact__links a:hover { color: var(--blaze); }
+.contact__foot a { color: #9fb0a5; }
 .contact__foot {
     margin-top: 100px;
     padding-top: 24px;
@@ -361,6 +372,41 @@ p { max-width: var(--measure); }
 .learned h3 { font-size: 1.15rem; }
 .learned ul { padding-left: 1.1em; display: grid; gap: 8px; }
 .learned li::marker { color: var(--blaze); }
+
+/* ---------- route drawn on scroll (after Skiper UI's "Svg follow scroll") ---------- */
+main { position: relative; }
+main > .section { position: relative; z-index: 1; }
+.route {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: visible;
+}
+.route svg { position: absolute; top: 0; left: 0; overflow: visible; }
+.route__ghost { stroke: var(--rule); stroke-width: 2; stroke-dasharray: 2 9; stroke-linecap: round; fill: none; }
+.route__line { stroke: var(--blaze); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+.route__marker circle:first-child { fill: var(--blaze); opacity: 0.18; }
+.route__marker circle:last-child { fill: var(--paper); stroke: var(--blaze); stroke-width: 3; }
+.route__tag {
+    position: absolute;
+    top: 0; left: 0;
+    padding: 4px 10px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transform: translate(-50%, calc(-100% - 22px));
+    font-variant-numeric: tabular-nums;
+    z-index: 2;
+    pointer-events: none;
+}
+@media (max-width: 560px) {
+    .route__line { stroke-width: 2.5; }
+    .route__tag { display: none; }
+}
 
 /* ---------- reveal (one orchestrated hero load) ---------- */
 .hero h1 .line { opacity: 0; transform: translateY(0.35em); animation: rise 0.9s cubic-bezier(.2,.9,.3,1) forwards; }

@@ -92,6 +92,129 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
     });
 })();
 
+/* ---------- route that draws itself as you scroll ----------
+   Vanilla take on Skiper UI's "Svg follow scroll" (skiper19). A dotted
+   trail runs down the page over the fixed topo map. The orange line
+   follows your scroll and the tag counts marathon miles. */
+(function route() {
+    const host = document.querySelector('.route');
+    const main = host && host.parentElement;
+    if (!host || !main) return;
+
+    const NS = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(NS, 'svg');
+    const ghost = document.createElementNS(NS, 'path');
+    const line = document.createElementNS(NS, 'path');
+    const marker = document.createElementNS(NS, 'g');
+    ghost.setAttribute('class', 'route__ghost');
+    line.setAttribute('class', 'route__line');
+    marker.setAttribute('class', 'route__marker');
+    marker.innerHTML = '<circle r="14"></circle><circle r="6"></circle>';
+    svg.append(ghost, line, marker);
+    host.appendChild(svg);
+
+    const tag = document.createElement('span');
+    tag.className = 'route__tag';
+    tag.setAttribute('aria-hidden', 'true');
+    main.appendChild(tag); // sits above the sections so photos never cover it
+
+    let L = 0, samples = [], current = 0, target = 0, raf = 0;
+
+    function build() {
+        const w = main.clientWidth;
+        const h = main.scrollHeight;
+        svg.setAttribute('width', w);
+        svg.setAttribute('height', h);
+        svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+
+        // run in the side margins, cross over at the top of each section
+        const content = Math.min(w, 1240);
+        const side = Math.max(12, (w - content) / 2 + Math.min(56, w * 0.04)) * 0.5;
+        const xs = [side, w - side];
+        const sections = [...main.querySelectorAll(':scope > .section')];
+        const mainTop = main.getBoundingClientRect().top + window.scrollY;
+        const ys = sections.map(s => s.getBoundingClientRect().top + window.scrollY - mainTop);
+        ys.push(h - 40);
+
+        let d = `M ${xs[0]} 0`;
+        let x = xs[0];
+        ys.forEach((y, i) => {
+            const nextY = ys[i + 1];
+            const sweep = Math.min(w * 0.42, 520);
+            // cross the page in the gap above the section
+            const to = i % 2 === 0 ? xs[1] : xs[0];
+            const dir = to > x ? 1 : -1;
+            const cy = y + 70;
+            d += ` C ${x} ${cy - 40}, ${x + dir * sweep} ${cy - 90}, ${(x + to) / 2} ${cy}`;
+            d += ` S ${to} ${cy + 40}, ${to} ${cy + 160}`;
+            x = to;
+            if (nextY === undefined) return;
+            // travel down the margin with one small loop part way
+            const loopY = cy + 160 + (nextY - cy - 160) * 0.45;
+            const r = Math.min(70, side * 0.9 + 20);
+            d += ` L ${x} ${loopY - 60}`;
+            if (side > 40) d += ` C ${x} ${loopY + 80}, ${x - dir * r * 2} ${loopY + 80}, ${x - dir * r} ${loopY}`;
+            d += ` S ${x} ${loopY - 50}, ${x} ${loopY + 40}`;
+            d += ` L ${x} ${nextY - 40}`;
+        });
+
+        ghost.setAttribute('d', d);
+        line.setAttribute('d', d);
+        L = line.getTotalLength();
+        line.style.strokeDasharray = `${L} ${L}`;
+
+        // y position along the path, kept monotonic so loops don't jump back
+        samples = [];
+        let maxY = 0;
+        const N = 900;
+        for (let n = 0; n <= N; n++) {
+            const pt = line.getPointAtLength((L * n) / N);
+            maxY = Math.max(maxY, pt.y);
+            samples.push(maxY);
+        }
+        update(true);
+    }
+
+    function lengthAtY(y) {
+        let lo = 0, hi = samples.length - 1;
+        while (lo < hi) {
+            const mid = (lo + hi) >> 1;
+            samples[mid] < y ? (lo = mid + 1) : (hi = mid);
+        }
+        return (L * lo) / (samples.length - 1);
+    }
+
+    function draw(len) {
+        line.style.strokeDashoffset = String(L - len);
+        const pt = line.getPointAtLength(Math.max(0.01, len));
+        marker.setAttribute('transform', `translate(${pt.x} ${pt.y})`);
+        marker.style.opacity = len < 4 ? '0' : '1';
+        tag.style.opacity = marker.style.opacity;
+        tag.style.left = pt.x + 'px';
+        tag.style.top = pt.y + 'px';
+        tag.textContent = 'Mile ' + ((len / L) * 26.2).toFixed(1);
+    }
+
+    function update(jump) {
+        const mainTop = main.getBoundingClientRect().top;
+        target = lengthAtY(window.innerHeight * 0.55 - mainTop);
+        if (jump || reduceMotion) { current = target; draw(current); return; }
+        if (!raf) raf = requestAnimationFrame(tick);
+    }
+
+    function tick() {
+        current += (target - current) * 0.18;
+        if (Math.abs(target - current) < 0.5) current = target;
+        draw(current);
+        raf = current === target ? 0 : requestAnimationFrame(tick);
+    }
+
+    window.addEventListener('scroll', () => update(false), { passive: true });
+    let t;
+    new ResizeObserver(() => { clearTimeout(t); t = setTimeout(build, 120); }).observe(main);
+    build();
+})();
+
 /* ---------- videos: only play when on screen ---------- */
 (function videos() {
     const vids = document.querySelectorAll('video[data-autoplay]');

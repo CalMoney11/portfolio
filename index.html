@@ -26,9 +26,9 @@
 
         <div class="wrap hero__inner">
             <h1>
-                <span class="line">I like to</span>
-                <span class="line">build</span>
-                <span class="line">cool stuff</span>
+                <span class="line">I build things,</span>
+                <span class="line">then I go</span>
+                <span class="line">outside.</span>
             </h1>
             <div class="hero__intro">
                 <p class="lede">I'm Calvin, a computer science student at the University of Oregon, graduating in 2027. I build full-stack web apps, make maps in ArcGIS, and teach people how to use the 3D printers and laser cutters at the UO makerspace. When I'm not at a keyboard I'm surfing, riding, climbing, or running. I just finished my first marathon.</p>
@@ -38,6 +38,9 @@
     </header>
 
     <main>
+        <!-- Route that draws itself as you scroll, over the fixed topo map -->
+        <div class="route" aria-hidden="true"></div>
+
         <!-- WORK -->
         <section class="section" id="work">
             <div class="wrap">
@@ -238,6 +241,7 @@
             </div>
             <div class="contact__foot">
                 <span>© <span data-year>2026</span> Calvin Peck Dobson</span>
+                <span>Scroll route and image trail adapted from <a href="https://skiper-ui.com" target="_blank" rel="noopener">Skiper UI</a></span>
                 <span>Portland and Eugene, Oregon</span>
             </div>
         </div>
