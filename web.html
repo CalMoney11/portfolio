@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Buddy | Calvin Peck Dobson</title>
+    <meta name="theme-color" content="#13261f">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="island" aria-label="Main">
+        <a class="island__name" href="index.html"><span class="island__dot" aria-hidden="true"></span><span class="island__label">Calvin Peck Dobson</span></a>
+        <div class="island__links">
+            <a href="index.html#work">Work</a>
+            <a href="gis.html">GIS</a>
+            <a href="other.html">Hackathons</a>
+        </div>
+    </nav>
+
+    <header class="page-head">
+        <div class="wrap">
+            <a class="back" href="index.html#work">Back to all work</a>
+            <h1>Art Buddy, AI critique for artists</h1>
+            <p class="lede">Art students wait days for peer feedback. Art Buddy gives it in seconds: upload a piece and get a critique of its composition, color and technique. Now I'm turning it into a place where artists post work, follow each other, and talk about it.</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="study">
+            <div class="wrap">
+                <div class="study__head">
+                    <div>
+                        <h2>How it came together</h2>
+                        <p class="meta">Next.js, OpenAI Vision API, Clerk, Google Cloud Functions, GitHub, Figma, VS Code</p>
+                    </div>
+                    <div class="text">
+                        <p>The first version was a ChatGPT embed hosted on GitHub Pages, with a Google Cloud Functions backend that handled image uploads, the API calls, and cleanup afterward. Once I wanted accounts and a social feed, I replanned the whole thing and moved to Next.js with Clerk for sign-in and billing.</p>
+                    </div>
+                </div>
+
+                <ol class="steps">
+                    <li class="step">
+                        <figure class="narrow"><img src="img/app/openai_api_flow.png" alt="Diagram of how an image gets to the OpenAI API and back" loading="lazy"></figure>
+                        <div class="step__text">
+                            <h3>Figure out the API flow</h3>
+                            <p>First I had to understand how an image gets from the browser to OpenAI and back.</p>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <figure><img src="img/app/art_buddy_ai.png" alt="First version of Art Buddy hosted on GitHub Pages" loading="lazy"></figure>
+                        <div class="step__text">
+                            <h3>Ship a simple page</h3>
+                            <p>I put that flow on a basic page hosted with GitHub Pages so I could test it with real artwork.</p>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <figure><img src="img/app/ai_reddit_styles.png" alt="Style exploration for the app" loading="lazy"></figure>
+                        <div class="step__text">
+                            <h3>Explore a look</h3>
+                            <p>Next I worked out the visual style I wanted.</p>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <figure>
+                            <video data-autoplay muted loop playsinline preload="metadata">
+                                <source src="img/app/figma_ella.mp4" type="video/mp4">
+                            </video>
+                        </figure>
+                        <div class="step__text">
+                            <h3>Prototype the social side in Figma</h3>
+                            <p>I realized I wanted more than a critique tool. Art students should be able to stay connected and give each other feedback too.</p>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <figure><img src="img/app/reddit_social_cri.png" alt="Eraser.io flowchart of the social app" loading="lazy"></figure>
+                        <div class="step__text">
+                            <h3>Replan it as a flowchart</h3>
+                            <p>In Eraser.io I mapped out every piece the social version needs and how each one would work.</p>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <figure class="narrow"><img src="img/app/stack.png" alt="The chosen tech stack" loading="lazy"></figure>
+                        <div class="step__text">
+                            <h3>Choose the stack</h3>
+                            <p>The flowchart made the stack choice straightforward.</p>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <figure><img src="img/app/loggin.png" alt="Sign-in screen" loading="lazy"></figure>
+                        <div class="step__text">
+                            <h3>Sign-in</h3>
+                            <p>Accounts work, through Clerk.</p>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <figure><img src="img/app/landing.png" alt="Art Buddy landing page" loading="lazy"></figure>
+                        <div class="step__text">
+                            <h3>Landing page</h3>
+                            <p>The front door for new users.</p>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <figure><img src="img/app/storage.png" alt="User data storage setup" loading="lazy"></figure>
+                        <div class="step__text">
+                            <h3>Store user data</h3>
+                            <p>A way to save and use each user's work and data.</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </section>
+    </main>
+
+    <footer class="contact" id="contact">
+        <div class="wrap">
+            <h2>Want to try Art Buddy?</h2>
+            <a class="contact__mail" href="mailto:calvinnnpdobson@gmail.com">calvinnnpdobson@gmail.com</a>
+            <div class="contact__links">
+                <a href="index.html">Home</a>
+                <a href="https://github.com/CalMoney11" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.linkedin.com/in/calvin-peck-dobson-4589032a1" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+            <div class="contact__foot">
+                <span>© <span data-year>2026</span> Calvin Peck Dobson</span>
+                <span>Portland and Eugene, Oregon</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

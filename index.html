@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calvin Peck Dobson</title>
+    <meta name="description" content="Calvin Peck Dobson — computer science student at the University of Oregon. Full-stack web apps, GIS maps, and a lot of time outside.">
+    <meta name="theme-color" content="#13261f">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body id="top">
+
+    <nav class="island" aria-label="Main">
+        <a class="island__name" href="#top"><span class="island__dot" aria-hidden="true"></span><span class="island__label">Calvin Peck Dobson</span></a>
+        <div class="island__links">
+            <a href="#work">Work</a>
+            <a href="#outside">Outside</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="trail" aria-hidden="true"
+             data-images='["img/trail/surf.jpg","img/trail/artbuddy.jpg","img/trail/marathon.jpg","img/trail/housing.jpg","img/trail/bike.jpg","img/trail/hacks.jpg","img/trail/summit.jpg","img/trail/projections.jpg","img/trail/landing.jpg"]'></div>
+
+        <div class="wrap hero__inner">
+            <h1>
+                <span class="line">I build things,</span>
+                <span class="line">then I go</span>
+                <span class="line">outside.</span>
+            </h1>
+            <div class="hero__intro">
+                <p class="lede">I'm Calvin, a computer science student at the University of Oregon, graduating in 2027. I build full-stack web apps, make maps in ArcGIS, and teach people how to use the 3D printers and laser cutters at the UO makerspace. When I'm not at a keyboard I'm surfing, riding, climbing, or running. I just finished my first marathon.</p>
+                <p class="hero__hint">Move your cursor (or a finger) around up here. It's a mix of my projects and my weekends.</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- WORK -->
+        <section class="section" id="work">
+            <div class="wrap">
+                <div class="section__head">
+                    <h2>Things I've made</h2>
+                    <p>I plan almost everything as a flowchart first, then build it. Hover a project to see a second view of it.</p>
+                </div>
+
+                <article class="project">
+                    <a class="project__media" href="web.html" aria-label="Art Buddy project details">
+                        <img src="img/app/landing.png" alt="Art Buddy landing page" loading="lazy">
+                        <img class="shift" src="img/app/art_buddy_ai.png" alt="" loading="lazy" style="object-fit:contain;padding:16px">
+                    </a>
+                    <div class="project__body">
+                        <span class="project__when">Personal project, 2025 – now</span>
+                        <h3>Art Buddy, AI critique for artists</h3>
+                        <p>Artists upload a piece and get feedback on composition, color and technique in seconds instead of waiting days for a peer review. It started as a ChatGPT embed on GitHub Pages with a Google Cloud Functions backend. I'm now rebuilding it in Next.js as a social space where art students post work, follow each other, and get critique.</p>
+                        <p class="stack"><strong>Built with</strong> Next.js, OpenAI Vision API, Clerk, Google Cloud Functions, Figma</p>
+                        <a class="textlink" href="web.html">See how I built it</a>
+                    </div>
+                </article>
+
+                <article class="project project--text">
+                    <div class="project__media">
+                        <span class="stat">45 min</span>
+                        <p>of manual client intake replaced by a web form that fills the CRM on its own.</p>
+                    </div>
+                    <div class="project__body">
+                        <span class="project__when">Internship, 2025 – 2026</span>
+                        <h3>Client intake for a lending company</h3>
+                        <p>As a full-stack intern at 80metrics, working for Keychoice Lending in Melbourne, I designed and shipped the intake forms that replaced their manual onboarding. The forms run on AWS Lambda behind API Gateway and pass client data to their CRM, email notifications, and OpenAI.</p>
+                        <p>I also set up WAF rules to keep bots off the production endpoints, upgraded the Node.js runtime, took secret keys out of the Lambda code, improved Google Search Console indexing, and wrote the handoff docs so the next developer can pick it all up.</p>
+                        <p class="stack"><strong>Built with</strong> Next.js, Node.js, AWS (Lambda, API Gateway, S3, IAM, CloudFormation, WAF, Route 53), Mercury CRM, OneSignal</p>
+                    </div>
+                </article>
+
+                <article class="project">
+                    <a class="project__media" href="gis.html" aria-label="GIS project details">
+                        <img src="img/GIS/housing_insecurity_v2_legendupdate-1.png" alt="Map of Lane County showing where renters pay more than 30% of their income on housing" loading="lazy" style="object-fit:contain">
+                        <img class="shift" src="img/GIS/lab_3.png" alt="" loading="lazy">
+                    </a>
+                    <div class="project__body">
+                        <span class="project__when">GIS coursework, 2024 – 2025</span>
+                        <h3>Maps that answer a question</h3>
+                        <p>Three ArcGIS Pro projects. The one I care about most maps housing insecurity in Lane County using census data. The worst of it sits right around the University of Oregon, where students compete for rentals they can't afford. The others find buildable land near parks and trails in Austin, Texas, and compare map projections side by side.</p>
+                        <p class="stack"><strong>Built with</strong> ArcGIS Pro, U.S. Census data, Eraser.io</p>
+                        <a class="textlink" href="gis.html">See the maps and flowcharts</a>
+                    </div>
+                </article>
+
+                <article class="project">
+                    <a class="project__media" href="other.html" aria-label="Hackathon project details">
+                        <img src="img/other/hacks-web.jpg" alt="Calvin and teammates at QuackHacks with laptops and energy drinks" loading="lazy">
+                    </a>
+                    <div class="project__body">
+                        <span class="project__when">QuackHacks, 2024 and 2025</span>
+                        <h3>Two hackathons, two apps</h3>
+                        <p>In 2024 our team built a web app that looks at a photo and gives recommendations based on what's in it. In 2025 we built an assignment tracker with a calendar view that pulls from Canvas and signs you in with Google. Both times we demoed to judges who weren't engineers, which was its own skill.</p>
+                        <p class="stack"><strong>Built with</strong> JavaScript, image recognition, Canvas API, Google Auth, Git</p>
+                        <a class="textlink" href="other.html">Read about both</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- OUTSIDE -->
+        <section class="section" id="outside">
+            <div class="wrap">
+                <div class="section__head">
+                    <h2>Things I do</h2>
+                    <p>Most of my good ideas show up on a trail or in the water. These are from the last year or so.</p>
+                </div>
+
+                <div class="outside">
+                    <figure class="shot shot--surf">
+                        <img src="img/life/surf.jpg" alt="Calvin surfing a standing river wave at sunset while friends wait on the bank" loading="lazy">
+                        <figcaption><strong>River surfing.</strong> No ocean needed, just a standing wave and a line of friends waiting their turn.</figcaption>
+                    </figure>
+                    <figure class="shot shot--run">
+                        <img src="img/life/marathon.jpg" alt="Calvin biting a finisher's medal on the track at Hayward Field" loading="lazy">
+                        <figcaption><strong>First marathon.</strong> 26.2 miles, finishing on the track at Hayward Field in Eugene.</figcaption>
+                    </figure>
+                    <figure class="shot shot--bike">
+                        <img src="img/life/bike.jpg" alt="Calvin holding his mountain bike over his head on a rocky trail" loading="lazy">
+                        <figcaption><strong>Mountain biking.</strong> Dusty Central Oregon singletrack.</figcaption>
+                    </figure>
+                    <figure class="shot shot--summit">
+                        <img src="img/life/summit.jpg" alt="Calvin and two friends on a snowy summit at sunrise" loading="lazy">
+                        <figcaption><strong>Summit at sunrise.</strong> Crampons, an ice axe, and a very early alarm.</figcaption>
+                    </figure>
+                </div>
+
+                <div class="also">
+                    <div>
+                        <h3>Raft guide</h3>
+                        <p>Guided groups of 3 to 8 through Class IV rapids on the Deschutes out of Maupin, and coordinated with other guides to keep groups of 100+ safe.</p>
+                    </div>
+                    <div>
+                        <h3>Search and rescue</h3>
+                        <p>Taught me navigation, leadership, and how to stay calm when things go wrong. That turns out to help with debugging too.</p>
+                    </div>
+                    <div>
+                        <h3>Deckhand in Alaska</h3>
+                        <p>Fished out of Cordova, learned to run the boat on my own while the captain slept, and hit our numbers on very little sleep.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section class="section" id="experience">
+            <div class="wrap">
+                <div class="section__head">
+                    <h2>Where I've worked</h2>
+                    <p>B.S. in Computer Science, University of Oregon, 2023 – 2027 (expected).</p>
+                </div>
+
+                <ol class="jobs" reversed>
+                    <li class="job">
+                        <span class="job__years">2025 – 2026</span>
+                        <div>
+                            <h3>Full-stack intern</h3>
+                            <p class="job__where">80metrics / Keychoice Lending, Melbourne (remote)</p>
+                        </div>
+                        <ul>
+                            <li>Built and deployed intake forms on Next.js, Node.js and AWS Lambda that replaced a 45-minute manual process.</li>
+                            <li>Integrated Mercury CRM, OneSignal and OpenAI, and managed IAM, S3, CloudFormation and WAF for the production endpoints.</li>
+                            <li>Wrote the handoff docs covering every service, repo and deploy step.</li>
+                        </ul>
+                    </li>
+                    <li class="job">
+                        <span class="job__years">2024 – now</span>
+                        <div>
+                            <h3>Technical support specialist</h3>
+                            <p class="job__where">University of Oregon Libraries, Eugene</p>
+                        </div>
+                        <ul>
+                            <li>Grew makerspace material use by 900% by designing and leading workshops for groups of 4 to 60 on 3D printers, laser cutters and craft tools.</li>
+                            <li>Consult on complex projects in person and in writing, and keep a high-volume print queue organized.</li>
+                            <li>Fix login, account and device connection problems, and maintain the hardware and software in both spaces.</li>
+                        </ul>
+                    </li>
+                    <li class="job">
+                        <span class="job__years">2024</span>
+                        <div>
+                            <h3>LeetCode Club</h3>
+                            <p class="job__where">University of Oregon</p>
+                        </div>
+                        <ul>
+                            <li>Weekly algorithm practice in Python, with Big O analysis and discussion of data structure trade-offs.</li>
+                        </ul>
+                    </li>
+                    <li class="job">
+                        <span class="job__years">2024</span>
+                        <div>
+                            <h3>Raft guide</h3>
+                            <p class="job__where">River Drifters, Maupin, Oregon</p>
+                        </div>
+                        <ul>
+                            <li>Guided groups through Class IV rapids and shared what I'd learned about the river and why it's worth protecting.</li>
+                        </ul>
+                    </li>
+                    <li class="job">
+                        <span class="job__years">2023</span>
+                        <div>
+                            <h3>Deckhand</h3>
+                            <p class="job__where">Silvermoon Seafood, Cordova, Alaska</p>
+                        </div>
+                        <ul>
+                            <li>Ran the boat and kept fishing solo during the captain's rest shifts, and met catch deadlines on tight timelines.</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <div class="skills">
+                    <h3>Tools I use</h3>
+                    <dl>
+                        <dt>Languages</dt><dd>JavaScript, Python, C, HTML, CSS, machine code</dd>
+                        <dt>Web</dt><dd>React, Next.js, Node.js, REST APIs, Clerk</dd>
+                        <dt>Cloud</dt><dd>AWS (Lambda, API Gateway, S3, CloudFormation, WAF, Route 53, EC2, IAM), Google Cloud, Firebase, OpenAI API</dd>
+                        <dt>Design and planning</dt><dd>Figma, Eraser.io flowcharts, ArcGIS Pro</dd>
+                        <dt>Everyday</dt><dd>Git and GitHub, VS Code, Docker</dd>
+                    </dl>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- CONTACT -->
+    <footer class="contact" id="contact">
+        <div class="wrap">
+            <h2>Want to build something, or go ride?</h2>
+            <a class="contact__mail" href="mailto:calvinnnpdobson@gmail.com">calvinnnpdobson@gmail.com</a>
+            <div class="contact__links">
+                <a href="https://github.com/CalMoney11" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.linkedin.com/in/calvin-peck-dobson-4589032a1" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="mailto:peckdobs@uoregon.edu">School email</a>
+            </div>
+            <div class="contact__foot">
+                <span>© <span data-year>2026</span> Calvin Peck Dobson</span>
+                <span>Portland and Eugene, Oregon</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

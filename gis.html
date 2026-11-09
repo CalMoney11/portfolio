@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIS work | Calvin Peck Dobson</title>
+    <meta name="theme-color" content="#13261f">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="island" aria-label="Projects on this page">
+        <a class="island__name" href="index.html"><span class="island__dot" aria-hidden="true"></span><span class="island__label">Calvin Peck Dobson</span></a>
+        <div class="island__links">
+            <a href="#housing">Housing</a>
+            <a href="#austin">Austin</a>
+            <a href="#projections">Projections</a>
+        </div>
+    </nav>
+
+    <header class="page-head">
+        <div class="wrap">
+            <a class="back" href="index.html#work">Back to all work</a>
+            <h1>Maps that answer a question</h1>
+            <p class="lede">Three projects in ArcGIS Pro. For each one I drew the workflow as a flowchart in Eraser.io before touching the data, so I knew which layers I needed and could trace my steps back when something looked wrong.</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="study" id="housing">
+            <div class="wrap">
+                <div class="study__head">
+                    <div>
+                        <h2>Housing insecurity in Lane County, Oregon</h2>
+                        <p class="meta">ArcGIS Pro, U.S. Census data, Eraser.io</p>
+                    </div>
+                    <div class="text">
+                        <p class="lede">Where do renters pay more than 30% of their income on housing?</p>
+                        <p>I pulled census data, joined it to a map of the county, and broke it down by area. The answer was right around campus. Landlords know students need housing near the university, so rents go up, and students end up paying more than they can afford. It hit close to home because it's data about the neighborhood I live in.</p>
+                    </div>
+                </div>
+
+                <ol class="steps">
+                    <li class="step">
+                        <figure><img src="img/GIS/Classifucation Categories.jpg" alt="Map of urban areas and Core Based Statistical Areas in the Willamette Valley" loading="lazy"></figure>
+                        <div class="step__text">
+                            <h3>Start with the wider region</h3>
+                            <p>The dataset covered far more than Lane County, so I first mapped urban areas across the Willamette Valley to set the context. Along the way I learned that CBSA stands for Core Based Statistical Area, a unit used across a lot of census analysis.</p>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <figure><img src="img/GIS/lab_4_flowchart1.png" alt="Flowchart of the layers and data needed for the project" loading="lazy"></figure>
+                        <div class="step__text">
+                            <h3>List every layer I'd need</h3>
+                            <p>This flowchart made sure I had all the layers and data before I started building the map.</p>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <figure><img src="img/GIS/lab_4_flowchart2.png" alt="Flowchart of the processing steps" loading="lazy"></figure>
+                        <div class="step__text">
+                            <h3>Write down the processing steps</h3>
+                            <p>Cutting a large dataset down to something useful is where it's easy to lose important information. This one is my roadmap for that part.</p>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <figure><img src="img/GIS/housing_insecurity_v2_legendupdate-1.png" alt="Final map of housing insecurity in Lane County, concentrated near the University of Oregon" loading="lazy"></figure>
+                        <div class="step__text">
+                            <h3>The final map</h3>
+                            <p>Most of the housing insecurity in the county is concentrated around the University of Oregon.</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="study" id="austin">
+            <div class="wrap">
+                <div class="study__head">
+                    <div>
+                        <h2>Buildable land near parks and trails in Austin</h2>
+                        <p class="meta">ArcGIS Pro, Eraser.io</p>
+                    </div>
+                    <div class="text">
+                        <p class="lede">If I worked in the City of Austin planning office, which open parcels would make the best home sites?</p>
+                        <p>The brief was to find parcels inside the city limits that are available for development and close to parks and trails.</p>
+                    </div>
+                </div>
+
+                <ol class="steps">
+                    <li class="step">
+                        <figure><img src="img/GIS/lab_3_flowchart.png" alt="Flowchart for the Austin parcel analysis" loading="lazy"></figure>
+                        <div class="step__text">
+                            <h3>Plan it as a flowchart</h3>
+                            <p>A full flowchart keeps me organized while I build, and gives me something to check against when a result looks off.</p>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <figure>
+                            <video data-autoplay muted loop playsinline preload="metadata" poster="img/GIS/lab_3.png">
+                                <source src="img/GIS/lab_3.mp4" type="video/mp4">
+                            </video>
+                        </figure>
+                        <div class="step__text">
+                            <h3>Load the data</h3>
+                            <p>Parks, trails, city limits and developable land, each as its own layer on the main map.</p>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <figure><img src="img/GIS/lab_3.png" alt="Map of Austin with buffers around parks and trails overlapping developable parcels" loading="lazy"></figure>
+                        <div class="step__text">
+                            <h3>Buffer and overlap</h3>
+                            <p>I buffered the trails and parks, then checked where those buffers overlap developable land.</p>
+                        </div>
+                    </li>
+                </ol>
+
+                <div class="learned">
+                    <h3>What I learned</h3>
+                    <ul>
+                        <li>Using Buffer, Clip and Select by Location together to narrow a question down.</li>
+                        <li>Handling and cleaning spatial data inside ArcGIS Pro.</li>
+                        <li>Ended with a short list of parcels close to both parks and trails.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="study" id="projections">
+            <div class="wrap">
+                <div class="study__head">
+                    <div>
+                        <h2>Comparing map projections</h2>
+                        <p class="meta">ArcGIS Pro</p>
+                    </div>
+                    <div class="text">
+                        <p>Starting from data my professor provided, I reprojected the same map into a set of common and uncommon projections and laid them out side by side so the distortion is easy to compare. It was also my first layout in ArcGIS Pro. The data is in <code>project_1.zip</code> on my <a href="https://github.com/CalMoney11" target="_blank" rel="noopener">GitHub</a>.</p>
+                    </div>
+                </div>
+
+                <figure style="background:var(--paper-deep);border-radius:6px;overflow:hidden">
+                    <img src="img/GIS/Projections_lab_2.png" alt="Layout comparing the same map in several projections" loading="lazy">
+                </figure>
+
+                <div class="learned">
+                    <h3>What I learned</h3>
+                    <ul>
+                        <li>What common and uncommon projections are each good for.</li>
+                        <li>How to build and adjust a layout.</li>
+                        <li>Getting around the ArcGIS Pro tools and interface.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="contact" id="contact">
+        <div class="wrap">
+            <h2>Questions about a map?</h2>
+            <a class="contact__mail" href="mailto:calvinnnpdobson@gmail.com">calvinnnpdobson@gmail.com</a>
+            <div class="contact__links">
+                <a href="index.html">Home</a>
+                <a href="https://github.com/CalMoney11" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.linkedin.com/in/calvin-peck-dobson-4589032a1" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+            <div class="contact__foot">
+                <span>© <span data-year>2026</span> Calvin Peck Dobson</span>
+                <span>Portland and Eugene, Oregon</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
